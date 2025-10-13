@@ -40,12 +40,9 @@ public class Hello {
 
         double firstValue = 20.00, secondValue = 80.00, sum = (firstValue + secondValue)*100.00;
         boolean isDividableByFourty = (sum/40.00 == 0) ?  true : false;
+        String result = isDividableByFourty ? "It is dividable by fourty" : "got some remainder";
 
-        if(isDividableByFourty){
-            System.out.println("It is dividable by fourty");
-        } else {
-            System.out.println("got some remainder");
-        }
+        System.out.println(result);
 
 
 
