@@ -2,27 +2,16 @@ public class MainChalange {
 
     public static void main(String[] args) {
 
-        boolean gameOver = true;
-        int score = 800;
-        int levelCompleted = 5;
-        int bonus = 100;
-        int finalScore = score;
-        ;
-
-        if (gameOver) {
-            finalScore += levelCompleted * bonus + 1000;
-            System.out.println("Your final score was  " + finalScore);
-        }
-
-        score = 10000;
-        levelCompleted = 8;
-        bonus = 200;
-        finalScore = score;
-
-        if (gameOver) {
-            finalScore += levelCompleted * bonus;
-            System.out.println("Your final score was  " + finalScore);
-        }
+        System.out.println(finalScoreCalculation(true, 800, 5, 100));
 
     }
+
+    public static String finalScoreCalculation(boolean gameOver, int score, int levelCompleted, int bonus) {
+
+        String result = gameOver ? "Your final score was  " + (score + (levelCompleted * bonus)) + "\n" : "The game is not over yet";
+
+        return result;
+
+    }
+
 }
