@@ -1,19 +1,19 @@
 public class Main {
 
     public static void main(String[] args) {
-        double kilometers = 100 * 1.609344;
 
-        int highScore = 50;
+        int myVariable = 50;
 
-        if (highScore > 25) {
-            highScore += 1000;
-            System.out.println("High Score: " + highScore);
-        }
+        myVariable++;
+        myVariable--;
 
-        int health = 100;
-        if(health<25&&highScore>1000){
-            highScore-=1000;
-            System.out.println("High Score: " + highScore);
-        }
+        System.out.println("this is a test");
+        System.out.println("this " +
+                "is another " +
+                "test");
+
+        int anotherVariable = 50;
+        myVariable--;
+        System.out.println("myVariable = " + myVariable);
     }
 }
