@@ -1,3 +1,5 @@
+package LoopsAndStuff;
+
 public class SumThreeAndFiveChallenge {
     public static void main(String[] args) {
         int result = 0, count = 0;

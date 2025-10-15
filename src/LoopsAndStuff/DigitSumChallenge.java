@@ -1,3 +1,5 @@
+package LoopsAndStuff;
+
 public class DigitSumChallenge {
     public static void main(String[] args) {
         int[] testArray = {125, 17654, 8876899, 1};

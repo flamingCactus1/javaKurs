@@ -1,3 +1,5 @@
+package LoopsAndStuff;
+
 public class LoopsAndStuff {
 
     public static void main(String[] args) {

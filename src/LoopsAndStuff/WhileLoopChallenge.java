@@ -1,3 +1,5 @@
+package LoopsAndStuff;
+
 public class WhileLoopChallenge {
     public static void main(String[] args) {
         int i = 5, counterOfEvenNumbers = 0;
