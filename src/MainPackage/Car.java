@@ -1,3 +1,5 @@
+package MainPackage;
+
 public class Car {
 
     private String manufacturer;
