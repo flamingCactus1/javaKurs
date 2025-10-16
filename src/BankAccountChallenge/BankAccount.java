@@ -8,6 +8,7 @@ public class BankAccount {
     String phoneNumber;
 
     public BankAccount() {
+        this(2323, 0, "undefined", "undefined", "undefined");
         System.out.println("Empty constructor is called");
     }
     public BankAccount(int accountNumber, double balance, String name, String email, String phoneNumber) {
@@ -17,6 +18,10 @@ public class BankAccount {
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
+    }
+
+    public BankAccount(String name, String email, String phoneNumber) {
+        this(12222, 0, name, email, phoneNumber);
     }
 
     public int getAccountNumber() {
