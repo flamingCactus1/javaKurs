@@ -10,8 +10,6 @@ public class Main {
         bankAccount.setPhoneNumber("+491111111111");
 
         bankAccount.depositFunds(300);
-        System.out.println("Balance is $" + bankAccount.getBalance());
-        bankAccount.withdrawFunds(900);
-        System.out.println("Balance is $" + bankAccount.getBalance());
+        bankAccount.withdrawFunds(500);
     }
 }

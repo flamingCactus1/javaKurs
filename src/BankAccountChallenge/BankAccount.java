@@ -7,6 +7,7 @@ public class BankAccount {
     String email;
     String phoneNumber;
 
+
     public int getAccountNumber() {
         return accountNumber;
     }
@@ -48,16 +49,20 @@ public class BankAccount {
     }
 
     public void depositFunds(double amount) {
-        if(amount < 0) {
+        if (amount < 0) {
+            System.out.println("Invalid data");
             return;
         }
         this.balance += amount;
+        System.out.println("Deposit of $" + amount + " is processed, new balance is $" + this.balance);
     }
+
     public void withdrawFunds(double amount) {
-        if(amount < 0 || this.balance < amount) {
-            System.out.println(this.balance-amount<0?"Insufficient funds in the account" : "");
+        if (amount < 0 || this.balance < amount) {
+            System.out.println(this.balance - amount < 0 ? "Insufficient funds in the account, your balance is $" + this.balance : "Invalid data");
             return;
         }
         this.balance -= amount;
+        System.out.println("Withdrawal of $" + amount + " is processed, remaining balance is $" + this.balance);
     }
 }
