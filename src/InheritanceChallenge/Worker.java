@@ -1,9 +1,9 @@
 package InheritanceChallenge;
 
 public class Worker {
-    private String name;
+    protected String name;
     private String birthDate;
-    private String endDate;
+    protected String endDate;
 
     public Worker(String name, String birthDate, String endDate) {
         this.name = name;

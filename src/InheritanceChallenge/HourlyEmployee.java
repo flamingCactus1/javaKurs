@@ -19,6 +19,16 @@ public class HourlyEmployee extends Employee {
     }
 
     public double collectDoubleSalary() {
+        System.out.println(this.name + " has collected double salary, which is $" + (2 * this.hourlySalary) );
         return hourlySalary * 2;
+    }
+
+    @Override
+    public String toString() {
+        return "HourlyEmployee{" +
+                "hourlySalary=" + hourlySalary +
+                ", name='" + name + '\'' +
+                ", endDate='" + endDate + '\'' +
+                "} " + super.toString();
     }
 }

@@ -22,6 +22,18 @@ public class SalariedEmployee extends Employee {
     }
 
     public void retire(){
+        this.endDate = "31.12.2025";
+        System.out.println(this.name + " has been retired on " + endDate);
         this.isRetired = true;
+    }
+
+    @Override
+    public String toString() {
+        return "SalariedEmployee{" +
+                "annualSalary=" + annualSalary +
+                ", isRetired=" + isRetired +
+                ", name='" + name + '\'' +
+                ", endDate='" + endDate + '\'' +
+                "} " + super.toString();
     }
 }
