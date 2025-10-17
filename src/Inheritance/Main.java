@@ -3,18 +3,24 @@ package Inheritance;
 public class Main {
     public static void main(String[] args) {
         Animal animal = new Animal("Generic Animal", "Huge", 400);
-        final String SPEED = "20";
+        final String SPEED = "slow";
 
         doAnimalStuff(animal, SPEED);
 
         Dog dog = new Dog();
-        doAnimalStuff(dog, SPEED);
+        doAnimalStuff(dog, "fast");
 
         Dog yorkie = new Dog("Yorkie", 15);
-        doAnimalStuff(yorkie, SPEED);
+        doAnimalStuff(yorkie, "normal");
 
         Dog retriever = new Dog("Labrador Retriever", 65, "Floppy", "Swimmer");
-        doAnimalStuff(retriever, SPEED);
+        doAnimalStuff(retriever, "slow");
+
+        Dog wolf = new Dog("Wolf", 40);
+        doAnimalStuff(wolf, "slow");
+
+        Fish goldie = new Fish("Goldfish", 0.25, 2, 3);
+        doAnimalStuff(goldie, "fast");
 
 
 
