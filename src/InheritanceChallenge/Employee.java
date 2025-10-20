@@ -6,10 +6,11 @@ public class Employee extends Worker{
 
     private long employeeId;
     private String hireDate;
+    private static int employeeNr = 1;
 
-    public Employee(String name, String birthDate, String endDate, long employeeId, String hireDate) {
+    public Employee(String name, String birthDate, String endDate, String hireDate) {
         super(name, birthDate, endDate);
-        this.employeeId = employeeId;
+        this.employeeId = Employee.employeeNr++;
         this.hireDate = hireDate;
     }
 

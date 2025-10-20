@@ -4,8 +4,8 @@ public class SalariedEmployee extends Employee {
     private double annualSalary;
     private boolean isRetired;
 
-    public SalariedEmployee(String name, String birthDate, String endDate, long employeeId, String hireDate, double annualSalary, boolean isRetired) {
-        super(name, birthDate, endDate, employeeId, hireDate);
+    public SalariedEmployee(String name, String birthDate, String endDate, String hireDate, double annualSalary, boolean isRetired) {
+        super(name, birthDate, endDate, hireDate);
         this.annualSalary = annualSalary < 50000.00 ? 50000.00 : annualSalary;
         this.isRetired = isRetired;
     }

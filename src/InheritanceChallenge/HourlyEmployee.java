@@ -3,8 +3,8 @@ package InheritanceChallenge;
 public class HourlyEmployee extends Employee {
     private double hourlySalary;
 
-    public HourlyEmployee(String name, String birthDate, String endDate, long employeeId, String hireDate, double hourlySalary) {
-        super(name, birthDate, endDate, employeeId, hireDate);
+    public HourlyEmployee(String name, String birthDate, String endDate, String hireDate, double hourlySalary) {
+        super(name, birthDate, endDate, hireDate);
         this.hourlySalary = hourlySalary < 15.00 ? 15.00 : hourlySalary;
     }
 
