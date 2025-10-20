@@ -9,8 +9,11 @@ public class HourlyEmployee extends Employee {
     }
 
     public HourlyEmployee() {
-        super();
-        this.hourlySalary = 15.00;
+        this("Undefined",
+                "undefined",
+                "undefined",
+                "undefined",
+                15.00);
     }
 
     @Override

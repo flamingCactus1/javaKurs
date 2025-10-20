@@ -16,11 +16,8 @@ public class Employee extends Worker{
 
     public Employee() {
         super();
-        Scanner input = new Scanner(System.in);
         this.hireDate = "Undefined";
-        System.out.println("Enter Employee ID");
-        System.out.print("Employee ID: ");
-        this.employeeId = input.nextLong();
+        this.employeeId = Employee.employeeNr++;
     }
 
     @Override

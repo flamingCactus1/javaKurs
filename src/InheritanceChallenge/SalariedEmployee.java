@@ -11,9 +11,12 @@ public class SalariedEmployee extends Employee {
     }
 
     public SalariedEmployee() {
-        super();
-        this.annualSalary = 50000.00;
-        this.isRetired = false;
+        this("undefined",
+                "undefined",
+                "undefined",
+                "undefined",
+                50000.00,
+                false);
     }
 
     @Override
