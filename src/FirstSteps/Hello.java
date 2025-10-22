@@ -1,6 +1,8 @@
+package FirstSteps;
+
 public class Hello {
     public static void main(String[] args) {
-        System.out.println("Hello, Tim!");
+        System.out.println("FirstSteps.Hello, Tim!");
 
         boolean isAlien = false;
         if (!isAlien) {
