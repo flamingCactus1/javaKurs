@@ -1,12 +1,20 @@
 package SmartKitchenChallenge;
 
-public class CoffeeMaker {
-    private boolean hasWorkToDo;
+public class CoffeeMaker extends Appliance {
+
+    public CoffeeMaker() {
+        super(false);
+    }
+
+    public CoffeeMaker(boolean hasWorkToDo) {
+        super(hasWorkToDo);
+    }
 
     public void brewCoffee(){
-        if (hasWorkToDo){
+        if(this.isHasWorkToDo()){
             System.out.println("Coffee is brewing");
-            hasWorkToDo = false;
+            System.out.println("Coffee is ready");
+            this.setHasWorkToDo(false);
         }
     }
 }

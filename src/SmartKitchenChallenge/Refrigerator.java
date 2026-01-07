@@ -1,12 +1,19 @@
 package SmartKitchenChallenge;
 
-public class Refrigerator {
-    private boolean hasWorkToDo;
+public class Refrigerator extends Appliance {
 
-    public void orderFood(){
-        if(hasWorkToDo){
+    public Refrigerator() {
+        super();
+    }
+
+    public Refrigerator(boolean hasWorkToDo) {
+        super(hasWorkToDo);
+    }
+
+    public void orderFood() {
+        if (this.isHasWorkToDo()) {
             System.out.println("Food is ordered");
-            this.hasWorkToDo = false;
+            this.setHasWorkToDo(false);
         }
     }
 }
