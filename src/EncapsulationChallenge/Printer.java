@@ -18,7 +18,7 @@ public class Printer {
         this(100, 0, false);
     }
 
-    public Printer (boolean duplex) {
+    public Printer(boolean duplex) {
         this(100, 0, duplex);
     }
 
@@ -35,17 +35,17 @@ public class Printer {
     }
 
     public void addTonerLevel(int tonerAmount) {
-        if(tonerAmount < 0) {
+        if (tonerAmount < 0) {
             System.out.println("You can not add a negative amount of toner");
             return;
         }
-        this.tonerLevel = (tonerAmount + this.tonerLevel) > 100 ? 100 : this.tonerLevel +  tonerAmount;
+        this.tonerLevel = (tonerAmount + this.tonerLevel) > 100 ? 100 : this.tonerLevel + tonerAmount;
         System.out.println("Toner Level: " + this.tonerLevel);
     }
 
     public void printPages(int pagesToPrint) {
         if (this.isDuplex()) {
-            pagesToPrint /= 2;
+            pagesToPrint = (pagesToPrint % 2 != 0) ? pagesToPrint / 2 + 1 : pagesToPrint / 2;
         }
         if (pagesToPrint <= 0 || this.tonerLevel <= 0) {
             System.out.println("No pages will be printed");
