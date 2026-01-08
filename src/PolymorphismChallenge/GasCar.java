@@ -39,4 +39,8 @@ public class GasCar extends Car {
         super.drive();
         System.out.println("Gasoline car drives around");
     }
+
+    public void emitGases(){
+        System.out.println("Gasoline car emits the gases");
+    }
 }

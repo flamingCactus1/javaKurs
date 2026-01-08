@@ -38,4 +38,8 @@ public class HybridCar extends Car{
         super.drive();
         System.out.println("Hybrid Car drives around");
     }
+
+    public void workFromTwoEngines(){
+        System.out.println("Hybrid Car works from two engines");
+    }
 }

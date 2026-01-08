@@ -38,4 +38,8 @@ public class ElectricCar extends Car {
         super.drive();
         System.out.println("The electric car drives and looks really cool");
     }
+
+    public void beCool(){
+        System.out.println("Electric car is being cool");
+    }
 }
