@@ -1,21 +1,10 @@
 package PolymorphismChallenge;
 
-import java.util.Scanner;
-
 public class Main {
     public static void main(String[] args) {
 
-        Scanner input = new Scanner(System.in);
-        System.out.println("Provide a type of car");
-        System.out.printf(".. %s%n".repeat(3),
-                "electric",
-                "hybrid",
-                "gas");
-        System.out.print(">");
-        String typeOfCar = input.nextLine();
-
-        Car car = Car.createDefaulCar(typeOfCar);
-        System.out.println(car.getClass().getSimpleName());
+        Car car = Car.createDefaultCar();
+        car.showStats();
         car.start();
         car.drive();
         car.stop();

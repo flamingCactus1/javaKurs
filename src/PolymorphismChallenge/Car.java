@@ -1,7 +1,6 @@
 package PolymorphismChallenge;
 
-import java.util.HashMap;
-import java.util.Map;
+
 import java.util.Scanner;
 
 public class Car {
@@ -39,7 +38,7 @@ public class Car {
         System.out.println("Engine is stopped");
     }
 
-    private void runEngine() {
+    protected void runEngine() {
         System.out.println("The engine is running");
     }
 
@@ -48,7 +47,15 @@ public class Car {
         System.out.println("The vehicle is moving");
     }
 
-    public static Car createDefaulCar(String carType) {
+    public static Car createDefaultCar() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Type the type of car");
+        System.out.printf(".. %s%n".repeat(3),
+                "electric",
+                "hybrid",
+                "gas");
+        System.out.print(">");
+        String carType = input.next();
         return switch (carType.toLowerCase()) {
             case "hybrid" -> new HybridCar();
             case "gas" -> new GasCar();
