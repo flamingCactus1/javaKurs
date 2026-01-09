@@ -8,8 +8,7 @@ public class OrderFactory {
     }
 
     public static Order createStandardOrder() {
-
+        return new Order();
     }
-
 
 }

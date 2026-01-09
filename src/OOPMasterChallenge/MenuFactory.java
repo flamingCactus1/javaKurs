@@ -20,7 +20,7 @@ public class MenuFactory {
     }
 
     private static void listMenu(Menu menu) {
-        
+
     }
 
     private static void listMainActionsMenu() {
@@ -99,7 +99,7 @@ public class MenuFactory {
         menu.getSideDishes().addLast(getBasicSellableStuffSpecs());
     }
 
-    private static SellableStuff getBasicSellableStuffSpecs(){
+    private static SellableStuff getBasicSellableStuffSpecs() {
         Scanner input = new Scanner(System.in);
         System.out.printf("Name%n>");
         String name = input.next();
@@ -109,10 +109,77 @@ public class MenuFactory {
     }
 
     private static void deleteItem(Menu menu) {
-        System.out.printf("What item do you want to delete?%n>");
         Scanner input = new Scanner(System.in);
+        System.out.printf("What item do you want to delete?%n>");
+        System.out.printf("%s%n".repeat(5),
+                "1. Burger",
+                "2. Side Dish",
+                "3. Drink",
+                "4. Topping",
+                "5. Exit");
+        System.out.print(">");
         String itemName = input.next();
+        switch (itemName.toLowerCase()) {
+            case "burger", "1" -> removeBurger(menu);
+            case "side", "side dish", "2" -> removeSideDish(menu);
+            case "drink", "3" -> removeDrink(menu);
+            case "topping", "4" -> removeTopping(menu);
+            default -> {
+            }
+        }
 
+    }
+// Refactor these methods later
+    private static void removeBurger(Menu menu) {
+        Scanner input = new Scanner(System.in);
+        System.out.printf("What burger do you want to delete?%n>");
+        menu.listBurgers();
+        System.out.print(">");
+        String burgerName = input.next();
+        try {
+            menu.getBurgers().removeIf(burger -> burger.getName().equalsIgnoreCase(burgerName));
+        } catch (IllegalArgumentException e) {
+            System.out.println(burgerName + " does not exist");
+        }
+    }
+
+    private static void removeSideDish(Menu menu) {
+        Scanner input = new Scanner(System.in);
+        System.out.printf("What side dish do you want to delete?%n>");
+        menu.listSideDishes();
+        System.out.print(">");
+        String sideDishName = input.next();
+        try {
+            menu.getSideDishes().removeIf(sideDish -> sideDish.getName().equalsIgnoreCase(sideDishName));
+        } catch (IllegalArgumentException e) {
+            System.out.println(sideDishName + " does not exist");
+        }
+    }
+
+    private static void removeDrink(Menu menu) {
+        Scanner input = new Scanner(System.in);
+        System.out.printf("What drink do you want to delete?%n>");
+        menu.listDrinks();
+        System.out.print(">");
+        String drinkName = input.next();
+        try {
+            menu.getDrinks().removeIf(drink -> drink.getName().equalsIgnoreCase(drinkName));
+        } catch (IllegalArgumentException e) {
+            System.out.println(drinkName + " does not exist");
+        }
+    }
+
+    private static void removeTopping(Menu menu) {
+        Scanner input = new Scanner(System.in);
+        System.out.printf("What topping do you want to delete?%n>");
+        menu.listExtras();
+        System.out.print(">");
+        String toppingName = input.next();
+        try{
+            menu.getExtras().removeIf(topping -> topping.getName().equalsIgnoreCase(toppingName));
+        }catch (IllegalArgumentException e){
+            System.out.println(toppingName + " does not exist");
+        }
     }
 
 }
