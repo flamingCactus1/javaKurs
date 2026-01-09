@@ -10,7 +10,8 @@ public class Burger extends SellableStuff {
     private SellableStuff extra2;
     private SellableStuff extra3;
 
-    public Burger(boolean buns, SellableStuff patty, boolean salad, boolean onion, boolean sauce, SellableStuff extra1, SellableStuff extra2,  SellableStuff extra3) {
+    public Burger(String name, double price, boolean buns, SellableStuff patty, boolean salad, boolean onion, boolean sauce, SellableStuff extra1, SellableStuff extra2,  SellableStuff extra3) {
+        super(name, price);
         this.buns = buns;
         this.patty = patty;
         this.salad = salad;
@@ -22,7 +23,7 @@ public class Burger extends SellableStuff {
     }
 
     public Burger() {
-        this(true, new SellableStuff("beef", 0.0), true, true, true, new SellableStuff("none", 0.0), new SellableStuff("none", 0.0), new SellableStuff("none", 0.0));
+        this("Default Burger", 5.0, true, new SellableStuff("beef", 0.0), true, true, true, new SellableStuff("none", 0.0), new SellableStuff("none", 0.0), new SellableStuff("none", 0.0));
     }
 
     public double getPrice() {

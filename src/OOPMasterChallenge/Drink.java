@@ -4,7 +4,7 @@ public class Drink extends SellableStuff{
     boolean ice;
     String size;
 
-    public Drink(boolean ice, String size, String name, int pricing){
+    public Drink(boolean ice, String size, String name, double pricing){
         super(name, pricing);
         this.ice = ice;
         this.size = size;
@@ -15,7 +15,7 @@ public class Drink extends SellableStuff{
         this.size = "Medium";
     }
 
-    public Drink(String name, int pricing){
+    public Drink(String name, double pricing){
         super(name, pricing);
         this.ice = true;
         this.size = "Medium";
