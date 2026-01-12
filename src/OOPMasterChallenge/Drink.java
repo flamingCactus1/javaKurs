@@ -1,5 +1,7 @@
 package OOPMasterChallenge;
 
+import java.util.Scanner;
+
 public class Drink extends SellableStuff{
     boolean ice;
     String size;
@@ -28,6 +30,39 @@ public class Drink extends SellableStuff{
         System.out.println("Size: " + this.size);
         System.out.println("Price: " + this.getPricing());
         System.out.println("=========================");
+    }
+
+    public void editDrink(){
+        Scanner input = new Scanner(System.in);
+        this.listDrink();
+        System.out.println("What would you like to edit?");
+        System.out.printf("%s%n".repeat(2),
+                "1. Ice",
+                "2. Size");
+        String choice = input.nextLine();
+        switch (choice.toLowerCase()){
+            case "1", "ice" ->  this.changeIce();
+            case "2", "size" -> this.changeSize();
+        }
+    }
+
+    private void changeSize(){
+        Scanner input = new Scanner(System.in);
+        System.out.println("Choose a size");
+        System.out.printf("%s%n".repeat(3),
+                "1. Small",
+                "2. Medium",
+                "3. Large");
+        String choice = input.nextLine();
+        switch (choice.toLowerCase()){
+            case "1", "small" -> this.size = "Small";
+            case "3", "large" -> this.size = "Large";
+            default -> this.size = "Medium";
+        }
+    }
+
+    private void changeIce(){
+        this.ice = !this.ice;
     }
 
     public boolean isIce() {

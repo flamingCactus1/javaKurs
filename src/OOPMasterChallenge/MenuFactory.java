@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class MenuFactory {
 
-    public static Menu editMenu(Menu menu) {
+    public Menu editMenu(Menu menu) {
         Scanner input = new Scanner(System.in);
         String choice = "";
         listMainActionsMenu();
@@ -14,25 +14,28 @@ public class MenuFactory {
             case "1", "add", "add item", "add an item" -> menu.addItem();
             case "2", "delete", "delete item", "delete an item" -> menu.deleteItem();
             case "3", "list", "list items", "list item", "list menu" -> menu.listMenu();
+            case "5", "standard", "standard order", "edit standard order", "edit the standard order", "edit the standard" -> menu.editStandardOrder();
             default -> {
             }
         }
         return menu;
     }
 
-    public static Menu editMenu() {
+    public Menu editMenu() {
         Menu menu = new Menu();
         return editMenu(menu);
     }
 
-    private static void listMainActionsMenu() {
+    private void listMainActionsMenu() {
         Scanner input = new Scanner(System.in);
         System.out.println("=========================");
         System.out.println("What would you like to do");
-        System.out.printf("%s%n".repeat(3),
+        System.out.printf("%s%n".repeat(5),
                 "1. Add an item",
                 "2. Delete an item",
-                "3. List items");
+                "3. List items",
+                "4. Edit or set the standard order",
+                "5. Exit");
         System.out.println("=========================");
     }
 

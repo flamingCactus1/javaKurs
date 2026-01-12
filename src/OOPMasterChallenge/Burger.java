@@ -1,5 +1,8 @@
 package OOPMasterChallenge;
 
+import java.util.Locale;
+import java.util.Scanner;
+
 public class Burger extends SellableStuff {
     private boolean buns;
     private SellableStuff patty;
@@ -106,5 +109,26 @@ public class Burger extends SellableStuff {
 
     public void setExtra3(SellableStuff extra3) {
         this.extra3 = extra3;
+    }
+
+    public void editToppings(Menu menu) {
+        Scanner input = new Scanner(System.in);
+        System.out.println("=========================");
+        System.out.println("Extra1: " + this.extra1.getName());
+        System.out.println("Extra2: " + this.extra2.getName());
+        System.out.println("Extra3: " + this.extra3.getName());
+        System.out.println("What topping would you like to edit?");
+        System.out.print(">");
+        String choice = input.nextLine();
+        if (choice.equalsIgnoreCase(this.extra1.getName())) {
+            this.extra1.editTopping(menu);
+        }else if (choice.equalsIgnoreCase(this.extra2.getName())) {
+            this.extra2.editTopping(menu);
+        }else if (choice.equalsIgnoreCase(this.extra3.getName())) {
+            this.extra3.editTopping(menu);
+        }else {
+            System.out.println("Invalid choice");
+        }
+        System.out.println("=========================");
     }
 }

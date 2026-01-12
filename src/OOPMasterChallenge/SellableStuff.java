@@ -1,5 +1,7 @@
 package OOPMasterChallenge;
 
+import java.util.Scanner;
+
 public class SellableStuff {
     private String name;
     private double pricing;
@@ -27,6 +29,23 @@ public class SellableStuff {
 
     public void setPricing(double pricing) {
         this.pricing = pricing;
+    }
+
+    public void editTopping(Menu menu) {
+        Scanner input = new Scanner(System.in);
+        System.out.println("=========================");
+        menu.listExtras();
+        System.out.println("Chose a new topping");
+        System.out.print(">");
+        String choice = input.nextLine();
+        SellableStuff searchResult = menu.getExtras().stream()
+                .filter(extra -> extra.getName().equalsIgnoreCase(choice))
+                .findFirst()
+                .orElse(null);
+        if (searchResult != null) {
+            this.name = searchResult.getName();
+            this.pricing = searchResult.getPricing();
+        }
     }
 
     public void listSellableStuff() {
