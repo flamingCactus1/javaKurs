@@ -14,7 +14,7 @@ public class MenuFactory {
             case "1", "add", "add item", "add an item" -> menu.addItem();
             case "2", "delete", "delete item", "delete an item" -> menu.deleteItem();
             case "3", "list", "list items", "list item", "list menu" -> menu.listMenu();
-            case "5", "standard", "standard order", "edit standard order", "edit the standard order", "edit the standard" -> menu.editStandardOrder();
+            case "4", "standard", "standard order", "edit standard order", "edit the standard order", "edit the standard" -> menu.editStandardOrder();
             default -> {
             }
         }
@@ -36,7 +36,9 @@ public class MenuFactory {
                 "3. List items",
                 "4. Edit or set the standard order",
                 "5. Exit");
-        System.out.println("=========================");
+        System.out.print(">");
+
     }
+
 
 }

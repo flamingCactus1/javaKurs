@@ -52,6 +52,8 @@ public class Order {
         System.out.println("+++++++++++++++++++++++++");
     }
 
+
+
     public void chooseBurger(Menu menu) {
         Scanner input = new Scanner(System.in);
         menu.listBurgers();
@@ -116,6 +118,14 @@ public class Order {
             System.out.println("Drink with name " + sideDishName + " not found");
         }
         System.out.println("=========================");
+    }
+
+    public static Order placeOrder(Menu menu){
+        Order order = new Order();
+        order.chooseDrink(menu);
+        order.chooseSideDish(menu);
+        order.chooseDrink(menu);
+        return order;
     }
 
 

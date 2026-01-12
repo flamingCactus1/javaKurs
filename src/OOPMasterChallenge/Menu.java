@@ -63,29 +63,29 @@ public class Menu {
     }
 
     public void listBurgers() {
+        System.out.println("Burgers");
         this.burgers.forEach(Burger::listBurger);
     }
 
     public void listDrinks() {
+        System.out.println("Drinks");
         this.drinks.forEach(Drink::listDrink);
     }
 
     public void listExtras() {
+        System.out.println("Extras");
         this.extras.forEach(SellableStuff::listSellableStuff);
     }
 
     public void listSideDishes() {
+        System.out.println("Side Dishes");
         this.sideDishes.forEach(SellableStuff::listSellableStuff);
     }
 
     public void listMenu(){
-        System.out.println("Burgers");
         this.listBurgers();
-        System.out.println("Side Dishes");
         this.listSideDishes();
-        System.out.println("Drinks");
         this.listDrinks();
-        System.out.println("Extras");
         this.listExtras();
         System.out.println("Standard Order");
         this.standardOrder.listOrder();
@@ -101,9 +101,9 @@ public class Menu {
         SellableStuff patty = new SellableStuff(pattyName, 0.0);
         LinkedList<SellableStuff> toppings = addToppingsToBurger();
         System.out.printf("price%n>");
-        int price = input.nextInt();
+        String price =  input.next();
         System.out.println("=========================");
-        this.burgers.addLast(new Burger(name, price, true, patty, true, true, true, toppings.get(0), toppings.get(1), toppings.get(2)));
+        this.burgers.addLast(new Burger(name, Double.parseDouble(price), true, patty, true, true, true, toppings.get(0), toppings.get(1), toppings.get(2)));
     }
 
     private static LinkedList<SellableStuff> addToppingsToBurger() {
@@ -131,7 +131,14 @@ public class Menu {
     public void addItem() {
         Scanner input = new Scanner(System.in);
         System.out.println("=========================");
-        System.out.print("What would you like to add?%n1.Burger%n2.Side Dish %n3.Drink%4. Topping%n5. Exit>");
+        System.out.println("What would you like to add?");
+        //%n1.Burger%n2.Side Dish %n3.Drink%4. Topping%n5. Exit>
+        System.out.printf("%s%n".repeat(5),
+                "1. Burger",
+                "2. Side dish",
+                "3. Drink",
+                "4. Topping",
+                "5. Exit");
         String choice = input.next();
         System.out.println("=========================");
         switch (choice.toLowerCase()) {
@@ -163,9 +170,9 @@ public class Menu {
         System.out.printf("Name%n>");
         String name = input.next();
         System.out.printf("price%n>");
-        double price = input.nextDouble();
+        String price = input.next();
         System.out.println("=========================");
-        return new SellableStuff(name, price);
+        return new SellableStuff(name, Double.parseDouble(price));
     }
 
     public void deleteItem() {
@@ -251,9 +258,7 @@ public class Menu {
     }
 
     private void setStandardOrder() {
-        this.standardOrder.chooseBurger(this);
-        this.standardOrder.chooseSideDish(this);
-        this.standardOrder.chooseDrink(this);
+        this.standardOrder = Order.placeOrder(this);
     }
 
     public void editStandardOrder() {

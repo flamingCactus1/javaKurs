@@ -6,35 +6,42 @@ import java.util.Scanner;
 public class OrderFactory {
     private Menu menu;
 
-    public static void createOrder(Menu menu, LinkedList<Order> orders) {
-        Scanner input = new Scanner(System.in);
-        listActions();
-        String choice = input.nextLine();
-        switch (choice.toLowerCase()) {
-            case "1", "place order", "place an order" -> {
-                orders.addLast(placeOrder(menu));
+    public void startShift(Menu menu) {
+        if (menu == null) {
+            System.out.println("Menu is null");
+            return;
+        }
+        while (true) {
+            Scanner input = new Scanner(System.in);
+            LinkedList<Order> orders = new LinkedList<>();
+            listActions();
+            String choice = input.nextLine();
+            switch (choice.toLowerCase()) {
+                case "1", "place order", "place an order" -> {
+                    orders.addLast(Order.placeOrder(menu));
+                }
+                case "2", "place standard", "place standard order", "standard order", "standard" -> {
+                    orders.addLast(placeStandardOrder(menu));
+                }
+                case "3", "edit", "edit standard", "edit standard order", "edit the standard order" -> {
+                    menu.editStandardOrder();
+                }
+                default -> {
+                }
             }
-            case "2", "place standard", "place standard order", "standard order", "standard" -> {
-                orders.addLast(placeStandardOrder(menu));
-            }
-            case "3", "edit", "edit standard", "edit standard order", "edit the standard order" -> {
-                menu.editStandardOrder();
-                createOrder(menu, orders);
-            }
-            default -> {
+            if (choice.equalsIgnoreCase("exit") || choice.equalsIgnoreCase("4")) {
+                System.out.println("The shift is ended");
+                System.out.println("Orders from today:");
+                System.out.println("+++++++++++++++++++++++++");
+                orders.forEach(Order::listOrder);
+                System.out.println("+++++++++++++++++++++++++");
+                break;
             }
         }
     }
 
     private static Order placeStandardOrder(Menu menu) {
         return menu.getStandardOrder();
-    }
-
-    private static Order placeOrder(Menu menu){
-        Order order = new Order();
-        Scanner input = new Scanner(System.in);
-
-        return order;
     }
 
     private static void listActions() {
