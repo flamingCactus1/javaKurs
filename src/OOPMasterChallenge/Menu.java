@@ -16,6 +16,10 @@ public class Menu {
         this.extras = extras;
     }
 
+    public Menu() {
+        this(new LinkedList<Burger>(), new LinkedList<Drink>(), new LinkedList<SellableStuff>(), new LinkedList<SellableStuff>());
+    }
+
     public LinkedList<Burger> getBurgers() {
         return burgers;
     }

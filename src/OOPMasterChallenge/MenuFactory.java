@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class MenuFactory {
 
-    public static void editMenu(Menu menu) {
+    public static Menu editMenu(Menu menu) {
         Scanner input = new Scanner(System.in);
         String choice = "";
         listMainActionsMenu();
@@ -17,6 +17,12 @@ public class MenuFactory {
             default -> {
             }
         }
+        return menu;
+    }
+
+    public static Menu editMenu() {
+        Menu menu = new Menu();
+        return editMenu(menu);
     }
 
     private static void listMainActionsMenu() {
