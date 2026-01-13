@@ -28,7 +28,7 @@ public class Drink extends SellableStuff{
         System.out.println("Name: " + this.getName());
         System.out.println("Ice: " + (this.ice == true ? "yes" : "no"));
         System.out.println("Size: " + this.size);
-        System.out.println("Price: " + this.getPricing());
+        System.out.println("Price: " + this.getTotalPrice());
         System.out.println("=========================");
     }
 
@@ -44,6 +44,14 @@ public class Drink extends SellableStuff{
             case "1", "ice" ->  this.changeIce();
             case "2", "size" -> this.changeSize();
         }
+    }
+
+    public double getTotalPrice(){
+        return switch (this.size.toLowerCase()){
+            case "large" -> this.getPricing() * 1.2;
+            case "small"-> this.getPricing() * 0.8;
+            default -> this.getPricing();
+        };
     }
 
     private void changeSize(){

@@ -1,8 +1,6 @@
 package OOPMasterChallenge;
 
 import java.util.LinkedList;
-import java.util.Locale;
-import java.util.Scanner;
 
 public class Burger extends SellableStuff {
     private boolean buns;
@@ -26,7 +24,7 @@ public class Burger extends SellableStuff {
         this("Default Burger", 5.0, true, new SellableStuff("beef", 0.0), true, true, true, new LinkedList<SellableStuff>());
     }
 
-    public double getPrice() {
+    public double getTotalPrice() {
         return this.getPricing() + this.patty.getPricing() + this.calculateToppingPrice();
     }
 
@@ -63,7 +61,7 @@ public class Burger extends SellableStuff {
         this.toppings.stream()
                 .filter(toppings -> !toppings.getName().equalsIgnoreCase("none"))
                 .forEach(toppings -> System.out.println("Topping: " + toppings.getName()));
-        System.out.println("Price: " + this.getPrice());
+        System.out.println("Price: " + this.getTotalPrice());
         System.out.println("=========================");
     }
 

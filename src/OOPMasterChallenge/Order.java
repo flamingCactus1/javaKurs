@@ -49,7 +49,13 @@ public class Order {
         this.drink.listDrink();
         System.out.println("SideDish");
         this.sideDish.listSellableStuff();
+        System.out.println("Total Price");
+        System.out.println(this.getPricing());
         System.out.println("+++++++++++++++++++++++++");
+    }
+
+    public double getPricing(){
+       return this.burger.getTotalPrice() + this.drink.getTotalPrice() + this.sideDish.getPricing();
     }
 
 
