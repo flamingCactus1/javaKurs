@@ -67,14 +67,21 @@ public class Order {
         if (this.burger == null) {
             System.out.println("Burger with name " + burgerName + " not found");
         } else {
-            System.out.println("Would you like to add or change toppings?");
+            System.out.println("Would you like to make this burger royal?");
             System.out.print("Y/N>");
             String choice = input.nextLine();
             if (choice.equalsIgnoreCase("Y")) {
-                this.burger.editToppings(menu);
+                this.burger.editToppings(menu, 5);
+            } else {
+                System.out.println("Would you like to add or change toppings?");
+                System.out.print("Y/N>");
+                choice = input.nextLine();
+                if (choice.equalsIgnoreCase("Y")) {
+                    this.burger.editToppings(menu, 3);
+                }
             }
+            System.out.println("=========================");
         }
-        System.out.println("=========================");
     }
 
     public void chooseDrink(Menu menu) {

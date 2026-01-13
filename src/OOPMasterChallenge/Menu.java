@@ -104,14 +104,18 @@ public class Menu {
         System.out.println("=========================");
         System.out.printf("Name%n>");
         String name = input.next();
-        System.out.printf("Choose a patty:%n1.Beef%n2.Chicken%n>");
+        System.out.printf("%s%n".repeat(3),
+                "Choose a patty",
+                "1. Beef",
+                "2. Chicken");
+        System.out.print(">");
         String pattyName = input.next();
         SellableStuff patty = new SellableStuff(pattyName, 0.0);
-        LinkedList<SellableStuff> toppings = addToppingsToBurger();
+        LinkedList<SellableStuff> toppings = new LinkedList<SellableStuff>();
         System.out.printf("price%n>");
         String price =  input.next();
         System.out.println("=========================");
-        this.burgers.addLast(new Burger(name, Double.parseDouble(price), true, patty, true, true, true, toppings.get(0), toppings.get(1), toppings.get(2)));
+        this.burgers.addLast(new Burger(name, Double.parseDouble(price), true, patty, true, true, true, toppings));
     }
 
     private static LinkedList<SellableStuff> addToppingsToBurger() {
@@ -124,10 +128,10 @@ public class Menu {
             if (response.equalsIgnoreCase("Y") || response.equalsIgnoreCase("Yes")) {
                 System.out.printf("Provide a name for the topping%n>");
                 String extraName = input.next();
-                toppings.addLast(new SellableStuff(extraName, 0.0));
+                toppings.add(new SellableStuff(extraName, 0.0));
             } else {
                 while (toppings.size() < 3) {
-                    toppings.addLast(new SellableStuff("none", 0.0));
+                    toppings.add(new SellableStuff("none", 0.0));
                 }
                 break;
             }
@@ -162,15 +166,15 @@ public class Menu {
 
     public void addDrink() {
         SellableStuff nameAndPriceForDrink = getBasicSellableStuffSpecs();
-        this.drinks.addLast(new Drink(true, "Middle", nameAndPriceForDrink.getName(), nameAndPriceForDrink.getPricing()));
+        this.drinks.add(new Drink(true, "Middle", nameAndPriceForDrink.getName(), nameAndPriceForDrink.getPricing()));
     }
 
     public void addTopping() {
-        this.extras.addLast(getBasicSellableStuffSpecs());
+        this.extras.add(getBasicSellableStuffSpecs());
     }
 
     public void addSideDish() {
-        this.sideDishes.addLast(getBasicSellableStuffSpecs());
+        this.sideDishes.add(getBasicSellableStuffSpecs());
     }
 
     private static SellableStuff getBasicSellableStuffSpecs() {

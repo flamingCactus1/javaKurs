@@ -16,10 +16,12 @@ public class MenuFactory {
             case "3", "list", "list items", "list item", "list menu" -> menu.listMenu();
             case "4", "standard", "standard order", "edit standard order", "edit the standard order",
                  "edit the standard" -> menu.editStandardOrder();
-            case "5", "standard menu", "create the standard menu", "create standard menu" -> this.createDefaultMenu(menu);
+            case "5", "standard menu", "create the standard menu", "create standard menu" ->
+                    this.createDefaultMenu(menu);
             default -> {
             }
         }
+        menu.getExtras().add(new SellableStuff("none", 0.00));
         return menu;
     }
 
@@ -44,9 +46,20 @@ public class MenuFactory {
     }
 
     private void createDefaultMenu(Menu menu) {
-        menu.getBurgers().add(new Burger("hamburger", 5.99, true, new SellableStuff("beef", 0.00), true, true, true, new SellableStuff(), new SellableStuff(), new SellableStuff()));
-        menu.getBurgers().add(new Burger("cheeseburger", 6.99, true, new SellableStuff("beef", 0.00), true, true, true, new SellableStuff("cheese", 0.00), new SellableStuff(), new SellableStuff()));
-        menu.getBurgers().add(new Burger("bacon burger", 6.99, true, new SellableStuff("beef", 0.00), true, true, true, new SellableStuff("bacon", 0.00), new SellableStuff("cheese", 0.00), new SellableStuff()));
+        SellableStuff cheese = new SellableStuff("cheese", 0.00);
+        SellableStuff bacon = new SellableStuff("bacon", 0.00);
+        menu.getBurgers().add(new Burger("hamburger", 5.99, true, new SellableStuff("beef", 0.00), true, true, true, new LinkedList<SellableStuff>()));
+        menu.getBurgers().add(new Burger("cheeseburger", 6.99, true, new SellableStuff("beef", 0.00), true, true, true, new LinkedList<SellableStuff>()));
+        menu.getBurgers().stream()
+                .filter(burger -> burger.getName().equalsIgnoreCase("cheeseburger"))
+                .forEach(burger -> burger.addTopping(cheese));
+        menu.getBurgers().add(new Burger("bacon burger", 6.99, true, new SellableStuff("beef", 0.00), true, true, true, new LinkedList<SellableStuff>()));
+        menu.getBurgers().stream()
+                .filter(burger -> burger.getName().equalsIgnoreCase("bacon burger"))
+                .forEach(burger -> burger.addTopping(bacon));
+        menu.getBurgers().stream()
+                .filter(burger -> burger.getName().equalsIgnoreCase("bacon burger"))
+                .forEach(burger -> burger.addTopping(cheese));
         menu.getSideDishes().add(new SellableStuff("fries", 3.99));
         menu.getSideDishes().add(new SellableStuff("potato wedges", 4.99));
         menu.getSideDishes().add(new SellableStuff("curly fries", 4.99));

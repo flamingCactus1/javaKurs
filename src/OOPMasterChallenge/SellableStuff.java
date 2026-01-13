@@ -45,6 +45,9 @@ public class SellableStuff {
         if (searchResult != null) {
             this.name = searchResult.getName();
             this.pricing = searchResult.getPricing();
+        }else {
+            this.name = "none";
+            this.pricing = 0.0;
         }
     }
 
