@@ -43,7 +43,7 @@ public class Burger extends SellableStuff {
         System.out.println("Extra1: " + this.extra1.getName());
         System.out.println("Extra2: " + this.extra2.getName());
         System.out.println("Extra3: " + this.extra3.getName());
-        System.out.println("Price: " + this.patty.getPricing());
+        System.out.println("Price: " + this.getPrice());
         System.out.println("=========================");
     }
 

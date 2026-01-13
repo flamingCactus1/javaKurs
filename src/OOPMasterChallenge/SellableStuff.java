@@ -12,7 +12,7 @@ public class SellableStuff {
     }
 
     public SellableStuff(){
-        this("Default Dish", 0.0);
+        this("none", 0.0);
     }
 
     public String getName() {

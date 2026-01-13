@@ -22,7 +22,7 @@ public class Main {
             switch (choice.toLowerCase()){
                 case "1", "crete/edit the menu", "create", "edit" -> menuFactory.editMenu(menu);
                 case "2", "shift", "start shift", "start the shift" -> orderFactory.startShift(menu);
-                case "3", "exit the application" -> System.exit(0);
+                default -> System.exit(0);
             }
         }
     }

@@ -64,22 +64,30 @@ public class Menu {
 
     public void listBurgers() {
         System.out.println("Burgers");
-        this.burgers.forEach(Burger::listBurger);
+        for (int i = 0; i<this.burgers.size(); i++) {
+            this.burgers.get(i).listBurger();
+        }
     }
 
     public void listDrinks() {
         System.out.println("Drinks");
-        this.drinks.forEach(Drink::listDrink);
+        for ( int i = 0; i<this.drinks.size(); i++) {
+            this.drinks.get(i).listDrink();
+        }
     }
 
     public void listExtras() {
         System.out.println("Extras");
-        this.extras.forEach(SellableStuff::listSellableStuff);
+        for ( int i = 0; i<this.extras.size(); i++) {
+            this.extras.get(i).listSellableStuff();
+        }
     }
 
     public void listSideDishes() {
         System.out.println("Side Dishes");
-        this.sideDishes.forEach(SellableStuff::listSellableStuff);
+        for ( int i = 0; i<this.sideDishes.size(); i++) {
+            this.sideDishes.get(i).listSellableStuff();
+        }
     }
 
     public void listMenu(){
@@ -139,6 +147,7 @@ public class Menu {
                 "3. Drink",
                 "4. Topping",
                 "5. Exit");
+        System.out.print(">");
         String choice = input.next();
         System.out.println("=========================");
         switch (choice.toLowerCase()) {
@@ -257,7 +266,7 @@ public class Menu {
         }
     }
 
-    private void setStandardOrder() {
+    public void setStandardOrder() {
         this.standardOrder = Order.placeOrder(this);
     }
 

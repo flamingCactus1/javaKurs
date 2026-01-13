@@ -53,7 +53,6 @@ public class Order {
     }
 
 
-
     public void chooseBurger(Menu menu) {
         Scanner input = new Scanner(System.in);
         menu.listBurgers();
@@ -105,7 +104,6 @@ public class Order {
     public void chooseSideDish(Menu menu) {
         Scanner input = new Scanner(System.in);
         menu.listSideDishes();
-        menu.listDrinks();
         System.out.println("=========================");
         System.out.println("Please enter the side dish");
         System.out.print(">");
@@ -120,9 +118,9 @@ public class Order {
         System.out.println("=========================");
     }
 
-    public static Order placeOrder(Menu menu){
+    public static Order placeOrder(Menu menu) {
         Order order = new Order();
-        order.chooseDrink(menu);
+        order.chooseBurger(menu);
         order.chooseSideDish(menu);
         order.chooseDrink(menu);
         return order;

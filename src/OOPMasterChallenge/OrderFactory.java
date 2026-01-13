@@ -11,17 +11,17 @@ public class OrderFactory {
             System.out.println("Menu is null");
             return;
         }
+        LinkedList<Order> orders = new LinkedList<>();
         while (true) {
             Scanner input = new Scanner(System.in);
-            LinkedList<Order> orders = new LinkedList<>();
             listActions();
             String choice = input.nextLine();
             switch (choice.toLowerCase()) {
                 case "1", "place order", "place an order" -> {
-                    orders.addLast(Order.placeOrder(menu));
+                    orders.add(Order.placeOrder(menu));
                 }
                 case "2", "place standard", "place standard order", "standard order", "standard" -> {
-                    orders.addLast(placeStandardOrder(menu));
+                    orders.add(placeStandardOrder(menu));
                 }
                 case "3", "edit", "edit standard", "edit standard order", "edit the standard order" -> {
                     menu.editStandardOrder();
