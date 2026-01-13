@@ -51,6 +51,19 @@ public class SellableStuff {
         }
     }
 
+    public boolean isOnMenu(Menu menu) {
+        return (this.isOnDrinks(menu) || this.isOnSideDishes(menu));
+    }
+
+    private boolean isOnDrinks(Menu menu){
+        return menu.getDrinks().stream().anyMatch(drink -> drink.getName().equalsIgnoreCase(this.name));
+    }
+
+    private boolean isOnSideDishes(Menu menu){
+        return menu.getSideDishes().stream().anyMatch(sideDish -> sideDish.getName().equalsIgnoreCase(this.name));
+    }
+
+
     public void listSellableStuff() {
         System.out.println("=========================");
         System.out.println("Name: " + this.name);

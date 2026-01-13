@@ -107,11 +107,17 @@ public class Menu {
         System.out.printf("%s%n".repeat(3),
                 "Choose a patty",
                 "1. Beef",
-                "2. Chicken");
-        System.out.print(">");
+                "2. Chicken%n>");
         String pattyName = input.next();
         SellableStuff patty = new SellableStuff(pattyName, 0.0);
         LinkedList<SellableStuff> toppings = new LinkedList<SellableStuff>();
+        for (int i = 0; i < 3; i++){
+            SellableStuff topping = new SellableStuff();
+            topping.editTopping(this);
+            if (topping.isOnMenu(this)){
+                toppings.add(topping);
+            }
+        }
         System.out.printf("price%n>");
         String price =  input.next();
         System.out.println("=========================");

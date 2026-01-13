@@ -21,7 +21,6 @@ public class MenuFactory {
             default -> {
             }
         }
-        menu.getExtras().add(new SellableStuff("none", 0.00));
         return menu;
     }
 

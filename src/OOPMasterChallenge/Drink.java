@@ -80,4 +80,9 @@ public class Drink extends SellableStuff{
     public void setSize(String size) {
         this.size = size;
     }
+
+    @Override
+    public boolean isOnMenu(Menu menu) {
+        return menu.getDrinks().stream().anyMatch(drink -> drink.getName().equalsIgnoreCase(this.getName()));
+    }
 }

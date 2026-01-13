@@ -67,6 +67,8 @@ public class Burger extends SellableStuff {
         System.out.println("=========================");
     }
 
+
+
     public boolean isBuns() {
         return buns;
     }
@@ -137,5 +139,8 @@ public class Burger extends SellableStuff {
         }
     }
 
-
+    @Override
+    public boolean isOnMenu(Menu menu) {
+        return menu.getBurgers().stream().anyMatch(burger -> burger.getName().equalsIgnoreCase(this.getName()));
+    }
 }
