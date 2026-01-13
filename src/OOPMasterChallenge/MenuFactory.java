@@ -30,7 +30,7 @@ public class MenuFactory {
     }
 
     private void listMainActionsMenu() {
-        Scanner input = new Scanner(System.in);
+
         System.out.println("=========================");
         System.out.println("What would you like to do");
         System.out.printf("%s%n".repeat(6),
