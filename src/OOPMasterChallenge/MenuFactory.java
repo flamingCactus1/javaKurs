@@ -7,22 +7,29 @@ public class MenuFactory {
 
     public Menu editMenu(Menu menu) {
         Scanner input = new Scanner(System.in);
-        String choice = "";
-        listMainActionsMenu();
-        choice = input.nextLine();
-        switch (choice.toLowerCase()) {
-            case "1", "add", "add item", "add an item" -> menu.addItem();
-            case "2", "delete", "delete item", "delete an item" -> menu.deleteItem();
-            case "3", "list", "list items", "list item", "list menu" -> menu.listMenu();
-            case "4", "standard", "standard order", "edit standard order", "edit the standard order",
-                 "edit the standard" -> menu.editStandardOrder();
-            case "5", "standard menu", "create the standard menu", "create standard menu" ->
-                    this.createDefaultMenu(menu);
-            default -> {
+        boolean isTimeToBreak = false;
+        while (!isTimeToBreak) {
+            String choice = "";
+            listMainActionsMenu();
+            choice = input.nextLine();
+            switch (choice.toLowerCase()) {
+                case "1", "add", "add item", "add an item" -> menu.addItem();
+                case "2", "delete", "delete item", "delete an item" -> menu.deleteItem();
+                case "3", "list", "list items", "list item", "list menu" -> menu.listMenu();
+                case "4", "standard", "standard order", "edit standard order", "edit the standard order",
+                     "edit the standard" -> menu.editStandardOrder();
+                case "5", "standard menu", "create the standard menu", "create standard menu" ->
+                        this.createDefaultMenu(menu);
+                default -> {
+                    isTimeToBreak = true;
+                }
             }
         }
         return menu;
     }
+
+
+
 
     public Menu editMenu() {
         Menu menu = new Menu();
