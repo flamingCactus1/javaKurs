@@ -1,6 +1,7 @@
 package Collections.linkedListsSection.linkedListChallenge;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.ListIterator;
 import java.util.Scanner;
 
@@ -49,7 +50,6 @@ public class Menu {
                 case "f", "forward" -> this.moveForward(iterator);
                 case "b", "backward" -> this.moveBackward(iterator);
                 case "l", "list", "list places" -> this.listTowns();
-                case "m", "menu" ->this.secondMenu();
                 default -> {
 
                 }
@@ -78,78 +78,6 @@ public class Menu {
     private void moveBackward(ListIterator<TownWithDistanceFromSidney> iterator) {
         if (iterator.hasPrevious()) {
             iterator.previous();
-        }
-    }
-
-    private void removeElement() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter a town name%n>");
-        String name = scanner.nextLine();
-        if (checkIfElementIsOnList(name)) {
-            ListIterator<TownWithDistanceFromSidney> iterator = townList.listIterator();
-            while (iterator.hasNext()) {
-                TownWithDistanceFromSidney current = iterator.next();
-                if (current.getTownName().equalsIgnoreCase(name)) {
-                    iterator.remove();
-                    break;
-                }
-            }
-        } else {
-            System.out.println("No such town");
-        }
-    }
-
-    private void addElement() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter a town name%n>");
-        String name = scanner.nextLine();
-        if (checkIfElementIsOnList(name)) {
-            System.out.println("This town is already in the list");
-        } else {
-            int distanceFromSidneyInKM;
-            while (true) {
-                System.out.printf("Enter the distance from sidney in KM%n>");
-                if (scanner.hasNextInt()) { // Safe check
-                    distanceFromSidneyInKM = scanner.nextInt();
-                    scanner.nextLine(); // CRITICAL: consume leftover newline
-                    if (distanceFromSidneyInKM < 0) {
-                        System.out.println("Please enter a positive value");
-                    } else {
-                        TownWithDistanceFromSidney town = new TownWithDistanceFromSidney(name, distanceFromSidneyInKM);
-                    }
-                }
-            }
-        }
-    }
-
-    private boolean checkIfElementIsOnList(String townName) {
-        ListIterator<TownWithDistanceFromSidney> iterator = townList.listIterator();
-        while (iterator.hasNext()) {
-            TownWithDistanceFromSidney current = iterator.next();
-            if (current.getTownName().equalsIgnoreCase(townName)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private void secondMenu(){
-        Scanner scanner = new Scanner(System.in);
-        String choice = "";
-        while (true){
-            System.out.printf("%s%n".repeat(3),
-                    "(A)dd a town",
-                    "(R)emove a town",
-                    "(Q)uit");
-            System.out.print(">");
-            choice = scanner.nextLine();
-            switch (choice.toLowerCase()) {
-                case "a", "add a town" -> addElement();
-                case "d", "remove a town" -> removeElement();
-            }
-            if (choice.equalsIgnoreCase("quit") || choice.equalsIgnoreCase("q")) {
-                break;
-            }
         }
     }
 }
