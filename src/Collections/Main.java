@@ -2,6 +2,8 @@ package Collections;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
 
 record GroceryItem(String name, String type, int count) {
 
@@ -21,17 +23,20 @@ record GroceryItem(String name, String type, int count) {
 public class Main {
 
     public static void main(String[] args) {
-        GroceryItem[] groceryArray = new GroceryItem[3];
-        groceryArray[0] = new GroceryItem("milk");
-        groceryArray[1] = new GroceryItem("potato", "vegetables", 6);
-        groceryArray[2] = new GroceryItem("Oranges", "fruits", 4);
+        String[] originalArray = new String[] {"First", "Second", "Third"};
+        var originalList = Arrays.asList(originalArray);
 
-        System.out.println(Arrays.toString(groceryArray));
+        originalList.set(0, "one");
+        System.out.println("list: " + originalList);
+        System.out.println("array: " + Arrays.toString(originalArray));
+        originalList.sort(Comparator.naturalOrder());
+        System.out.println("sorted: " + Arrays.toString(originalArray));
 
-        ArrayList<GroceryItem> groceryArrayList = new ArrayList<>();
-        groceryArrayList.add(new GroceryItem("butter"));
-        groceryArrayList.add(new GroceryItem("bread", "bread", 2);
-        groceryArrayList.add(new GroceryItem("onion", "vegetables", 1));
-        groceryArrayList.forEach(GroceryItem::printGroceryItem);
+        List<String> list = Arrays.asList("Sunday", "Monday", "Tuesday");
+        System.out.println(list);
+
+        var listOne = List.of("Sunday", "Monday", "Tuesday");
+        listOne.sort(Comparator.naturalOrder());
     }
 }
+
