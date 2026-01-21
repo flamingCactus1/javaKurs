@@ -27,14 +27,6 @@ public class Bank {
         this.name = name;
     }
 
-    public ArrayList<Customer> getCustomers() {
-        return customers;
-    }
-
-    public void setCustomers(ArrayList<Customer> customers) {
-        this.customers = customers;
-    }
-
     public void addCustomer(Customer... customersToAdd) {
         for (Customer customer : customersToAdd) {
             if (getCustomerIndex(customer.getName()) == -1) {
