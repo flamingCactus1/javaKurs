@@ -2,6 +2,7 @@ package Abstraction.abstractClassesChallenge;
 
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Store {
@@ -18,11 +19,13 @@ public class Store {
     public void createAssortment() {
         System.out.printf("Would you like to crate an assortment manually%ny/n>");
         Scanner scanner = new Scanner(System.in);
-        String answer = scanner.next();
+        String answer = scanner.nextLine();
         if (answer.equalsIgnoreCase("y")) {
-            while(true){
+            do {
                 this.assortment.add(ProductForSale.factory());
-            }
+                System.out.printf("Add more items?%ny/n>");
+                answer = scanner.nextLine();
+            } while (!answer.equalsIgnoreCase("n"));
         }else {
             this.assortment = createDefaultAssortment();
         }
@@ -58,14 +61,25 @@ public class Store {
                     "1. Add an item",
                     "2. Delete an item",
                     "3. Modify an item",
-                    "4. Cancel the order placement",
-                    "9. Place an order");
+                    "4. Place an order",
+                    "9. Cancel the order placement");
             System.out.print(">");
             String answer = scanner.nextLine();
             switch (answer.toLowerCase()) {
                 case "1", "add", "add an item" -> this.incompleteOrder.add(OrderItem.orderItemFactory(this.assortment));
                 case "2", "delete", "delete an item" -> this.deleteItem();
-                case "3", "modify", "modify an item" -> this.
+                case "3", "modify", "modify an item" -> this.modifyItem();
+                case "4", "place", "place an order" -> {
+                    listOrder(this.incompleteOrder);
+                    this.completeOrders.add(new ArrayList<OrderItem>(this.incompleteOrder));
+                    this.incompleteOrder.clear();
+                    System.out.println("Order has been added!");
+                    return;
+                }
+                default -> {
+                    this.incompleteOrder.clear();
+                    return;
+                }
             }
         }
     }
@@ -81,7 +95,7 @@ public class Store {
 
     private void deleteItem(){
         Scanner scanner = new Scanner(System.in);
-        listOrder();
+        listOrder(this.incompleteOrder);
         System.out.printf("Enter the name of item to delete%n>");
         String itemName = scanner.nextLine();
         if (findIndexOfItemInOrder(itemName) >= 0) {
@@ -89,23 +103,78 @@ public class Store {
         }
     }
 
-    private void listOrder(){
+    private void listOrder(ArrayList<OrderItem> orderItems){
         System.out.println("_".repeat(50));
-        for (OrderItem orderItem : this.incompleteOrder) {
+        for (OrderItem orderItem : orderItems) {
             orderItem.printPricedItem();
         }
         System.out.println("_".repeat(50));
+        System.out.println("Total" + " ".repeat(50 - ("Total" + getOrderTotal(orderItems)).length()) + getOrderTotal(orderItems));
+        System.out.println("_".repeat(50));
+
     }
+
+    private double getOrderTotal(ArrayList<OrderItem> orderItems){
+        double sum = 0.0;
+        for(OrderItem orderItem : orderItems){
+            sum += orderItem.getSalesPrice();
+        }
+        return sum;
+    }
+
+    private void listCompleteOrders(){
+        for (ArrayList<OrderItem> orderItems : completeOrders) {
+            System.out.println("=".repeat(50));
+            listOrder(orderItems);
+            System.out.println("=".repeat(50));
+        }
+    }
+
+
 
     private void modifyItem(){
         Scanner scanner = new Scanner(System.in);
-        listOrder();
+        listOrder(incompleteOrder);
         System.out.printf("Enter the name of item to modify%n>");
         String itemName = scanner.nextLine();
         if (findIndexOfItemInOrder(itemName) >= 0) {
             System.out.println("What would you like to modify?");
-            System.out.printf("");
+            System.out.printf("%s%n".repeat(3),
+                    "1. Product",
+                    "2. Quantity",
+                    "9. Nothing");
+            System.out.print(">");
+            String answer = scanner.nextLine();
+            switch (answer.toLowerCase()) {
+                case "1", "product" -> this.incompleteOrder.get(findIndexOfItemInOrder(itemName)).setProductForSale(ProductForSale.factory(assortment));
+                case "2", "quantity" -> this.incompleteOrder.get(findIndexOfItemInOrder(itemName)).setNewQuantity();
+                default -> {}
+            }
         }
+    }
+
+    public void mainAction(){
+        Scanner scanner = new Scanner(System.in);
+        while(true){
+            System.out.println("What would you like to do?");
+            System.out.printf("%s%n".repeat(4),
+                    "1. Show assortment",
+                    "2. Show placed orders",
+                    "3. Place an order",
+                    "4. Close shift");
+            System.out.print(">");
+            String answer = scanner.nextLine();
+            switch (answer.toLowerCase()) {
+                case "1", "show assortment" ->  showAssortment();
+                case "2", "show placed orders" -> listCompleteOrders();
+                case "3", "place an order" -> createOrder();
+                default -> {
+                    listCompleteOrders();
+                    return;
+                }
+            }
+        }
+
     }
 }
 

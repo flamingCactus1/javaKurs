@@ -20,17 +20,26 @@ public class OrderItem {
         return quantity;
     }
 
+    public void setProductForSale(ProductForSale productForSale) {
+        this.productForSale = productForSale;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
     public double getSalesPrice() {
         return this.productForSale.getPrice() * this.quantity;
     }
 
     public int calculateWhiteSpaces() {
-        String stringToPrint = this.quantity + this.productForSale.getName() + this.getSalesPrice();
-        return Math.min((50 - stringToPrint.length()), 0);
+        String stringToPrint = this.quantity + " " + this.productForSale.getName() + this.getSalesPrice();
+        return Math.max((50 - stringToPrint.length()), 0);
     }
 
     public void printPricedItem() {
         System.out.println(this.quantity +
+                " " +
                 this.productForSale.getName() +
                 " ".repeat(calculateWhiteSpaces()) +
                 this.getSalesPrice());
@@ -48,6 +57,19 @@ public class OrderItem {
             }
         }
         return new OrderItem(product, quantity);
+    }
+
+    public void setNewQuantity(){
+        int newQuantity = -1;
+        while (newQuantity < 0){
+            System.out.printf("Please enter the quantity of the product%n>");
+            Scanner scanner = new Scanner(System.in);
+            newQuantity = Integer.parseInt(scanner.nextLine());
+            if (newQuantity < 0){
+                System.out.println("The quantity must be positive");
+            }
+        }
+        this.quantity = newQuantity;
     }
 
 

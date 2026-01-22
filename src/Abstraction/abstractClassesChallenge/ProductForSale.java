@@ -45,7 +45,11 @@ public abstract class ProductForSale {
         ProductForSale productForSale = null;
         while (productForSale == null) {
             System.out.println("Please choose product");
-            assortment.forEach(product -> product.showDetails());
+            for (ProductForSale product: assortment) {
+                System.out.println("=".repeat(50));
+                product.showDetails();
+                System.out.println("=".repeat(50));
+            }
             System.out.print("Enter the product name: ");
             String productName = input.nextLine();
             productForSale = assortment.stream()
@@ -69,7 +73,7 @@ public abstract class ProductForSale {
         Scanner input = new Scanner(System.in);
         System.out.printf("Please enter the product price%n> ");
         double productPrice = Double.parseDouble(input.nextLine());
-        this.price = (double) Math.min(0, productPrice);
+        this.price = (double) Math.max(0, productPrice);
     }
 
     public void collectDescription() {
